@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>博客登录和注册</title>
+    <meta charset="utf-8">
+    <link href = "/www/css/main.css" rel = "stylesheet" type = "text/css"/>
+</head>
+<body>
+<h1>博客登录和注册</h1>
+
+<div class = "login" style = "margin-top:50px;">
+    
+    <div class = "header">
+        <div class = "switch" id = "switch"><a class = "switch_btn_focus" id = "switch_qlogin"
+                                               href = "javascript:void(0);" tabindex = "7">快速登录</a>
+            <a class = "switch_btn" id = "switch_login" href = "javascript:void(0);" tabindex = "8">快速注册</a>
+
+            <div class = "switch_bottom" id = "switch_bottom"
+                 style = "position: absolute; width: 64px; left: 0px;"></div>
+        </div>
+    </div>
+
+    
+    <div class = "web_qr_login" id = "web_qr_login" style = "display: block;">
+
+        <!--登录-->
+        <div class = "web_login clearfix" id = "web_login">
+
+
+            <div class = "login-box">
+
+
+                <div class = "login_form">
+                    <form action = "" name = "loginform" accept-charset = "utf-8" id = "login_form" class = "loginForm"
+                          method = "post">
+
+                        <div class = "uinArea" id = "uinArea">
+                            <label class = "input-tips" for = "u">帐号：</label>
+
+                            <div class = "inputOuter" id = "uArea">
+
+                                <input type = "text" id = "u" name = "username" class = "inputstyle"/>
+                            </div>
+                        </div>
+                        <div class = "pwdArea" id = "pwdArea">
+                            <label class = "input-tips" for = "p">密码：</label>
+
+                            <div class = "inputOuter" id = "pArea">
+
+                                <input type = "password" id = "p" name = "p" class = "inputstyle"/>
+                            </div>
+                        </div>
+                        <li>
+                            <div class="lerr yes"><span>有账号了吗？赶紧登陆吧</span></div>
+                        </li>
+
+                        <div style = "padding-left:50px;margin-top:20px;">
+                            <input type = "submit" value = "登 录" style = "width:150px;" class = "button_blue"id="login_btn"/>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+        <!--登录end-->
+    </div>
+
+    <!--注册-->
+    <div class = "qlogin" id = "qlogin" style = "display: none; ">
+
+        <div class = "web_login">
+            <form name = "form2" id = "regUser" accept-charset = "utf-8" action = "" method = "post">
+                <ul class = "reg_form" id = "reg-ul">
+                    <div id = "userCue" class = "cue">快速注册请注意格式</div>
+                    <li>
+                        <label for = "user" class = "input-tips2 clearfix">用户名：</label>
+                        <div class = "inputOuter2">
+                            <input type = "text" id = "user" name = "user" maxlength = "16" class = "inputstyle2"/>
+                        </div>
+                    
+                    </li>
+
+                    <li>
+                        <label for = "passwd" class = "input-tips2 clearfix">密码：</label>
+
+                        <div class = "inputOuter2">
+                            <input type = "password" id = "passwd" name = "passwd" maxlength = "16"
+                                   class = "inputstyle2"/>
+                        </div>
+                    
+                    </li>
+                    <li>
+                        <label for = "passwd2" class = "input-tips2">确认密码：</label>
+
+                        <div class = "inputOuter2">
+                            <input type = "password" id = "passwd2" name = "" maxlength = "16" class = "inputstyle2"/>
+                        </div>
+                    
+                    </li>
+
+                    <li>
+                        <label class = "input-tips2 clearfix">email：</label>
+
+                        <div class = "inputOuter2">
+
+                            <input type = "text" id = "email" name = "email" class = "inputstyle2"/>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="qerr no"><span></span></div>
+                    </li>
+                    <li>
+                        <div class = "inputArea">
+                            <input type = "button" id = "reg" style = "margin-top:10px;margin-left:85px;"
+                                   class = "button_blue" value = "同意协议并注册"/>
+                            <a href = "javascript:;" class = "zcxy"
+                                                                                target = "_blank">注册协议</a>
+                        </div>
+                    
+                    </li>
+                    <div class = "cl"></div>
+                </ul>
+            </form>
+
+
+        </div>
+
+    
+    </div>
+    <!--注册end-->
+</div>
+<div class = "jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
+</body>
+</html>
+<script type = "text/javascript" src = "/www/js/jquery-1.9.0.min.js"></script>
+<!--<script src = "js/login.js"></script>-->
+<script>
+$(function(){
+    //注册点击事件
+    $('#switch_login').on('click',function(){
+        $('#web_qr_login').css('display','none');
+        $('#qlogin').css('display','block');
+        $('#switch_bottom').css('left','155px');
+
+    })
+    $('#switch_qlogin').on('click',function(){
+        $('#qlogin').css('display','none');
+        $('#web_qr_login').css('display','block');
+        $('#switch_bottom').css('left','0px');
+
+    })
+})
+//注册业务处理
+//注册表单前台校验
+    $(function(){
+        $('#reg').on('click',function(){
+            if(!/^[a-zA-Z]+[a-zA-Z0-9]+$/.test($('#user').val())){
+                $('.qerr span').html('用户名字母和数字组成，第一个字必须为字母');
+                return false;
+            }
+            else if(!/^[a-zA-Z0-9]{6,18}$/.test($('#passwd').val())){
+                $('.qerr span').html('密码为6-18位数字字母组成')
+                return false;
+            }
+            else if(!($('#passwd2').val()===$('#passwd').val())){
+                $('.qerr span').html('两次输入密码不一致')
+                return false;
+            }
+            else if(!/^\w+@\w+\.\w+$/.test($('#email').val())){
+                $('.qerr span').html('邮箱格式应为xxx@xx.xxx')
+                return false;
+            }
+            //发送注册ajax请求
+            else {
+                var register = {
+                    username:$('#user').val(),
+                    password:$('#passwd').val(),
+                    email:$('#email').val()
+                }
+                $.ajax({
+                    url:'/register',
+                    type:'post',
+                    data:register,
+                    datatype:'string',
+                    success:function(data){
+                        if(data.state){
+                            $('.qerr span').html(data.msg);
+                            $('.qerr').removeClass('no');
+                            $('.qerr').addClass('yes');
+                            return false;
+                        }
+                        else {
+                            $('.qerr span').html(data.msg);
+                            $('.qerr').removeClass('yes');
+                            $('.qerr').addClass('no');
+                            return false;
+
+                        }
+                    }
+                })
+            }
+        })
+    })
+//登录业务处理
+$(function(){
+    $('#login_btn').on('click',function(event){
+        var event = event||window.event;
+        var login = {
+            username:$('#u').val(),
+            password:$('#p').val()
+        }
+
+    event.preventDefault();
+        $.ajax({
+            url:'/login',
+            type:'post',
+            data:login,
+            datatype:'string',
+            success:function(data) {
+                if(data.state){
+                    $('.lerr span').html(data.msg);
+                    $('.lerr').removeClass('no');
+                    $('.lerr').addClass('yes');
+                    return false;
+                }
+                else {
+                    $('.lerr span').html(data.msg);
+                    $('.lerr').removeClass('yes');
+                    $('.lerr').addClass('no');
+                    return false;
+
+                }
+            }
+            })
+    })
+    })
+</script>
