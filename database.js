@@ -1,4 +1,4 @@
-
+//封装操作数据库的函数
 module.exports = function(str,callback){
     var mysql = require('mysql');
     var pool  = mysql.createPool({
