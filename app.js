@@ -17,6 +17,6 @@ app.use(cookieParser());
 //引用路由
 app.use(router);
 
-app.listen(4000,function(){
+app.listen(3000,function(){
     console.log('开始监控');
 })

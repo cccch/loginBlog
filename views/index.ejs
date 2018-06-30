@@ -19,13 +19,13 @@
         margin: 0;
         padding: 0;
     }
-    body {
+    html,body {
         width: 100%;
         height: 100%;
     }
     .content {
-        height: 100%;
         width: 100%;
+        min-height: 90%;
         background-color: #eee;
     }
     .nav-top {
@@ -65,7 +65,7 @@
     }
     .nav-top-right p {
         position: absolute;
-        right: 300px;
+        right: 250px;
         top: 0;
         font: 500 25px/50px 'microsoft yahei';
     }
@@ -95,6 +95,7 @@
     .media-footer{
         float: right;
         margin-top: 10px;
+        font: 300 14px/14px 'microsoft yahei';
     }
     .media-footer span {
         margin: 3px;
@@ -108,15 +109,15 @@
         <div class="nav-top-logo"></div>
         <div class="nav-top-right">
             <% if(username) { %>
-            <a href = "./out">
+            <a href = "/out">
                 <div class="btn-warning">登出</div>
             </a>
-            <a href = "./article">
+            <a href = "/article">
                 <div class="btn-success">写文</div>
             </a>
-            <p>欢迎您,  <%= username %></a>
+            <p class="hidden-xs">欢迎您,  <%= username %></a>
                 <% } else{%>
-            <a href = "./login">
+            <a href = "/login">
                 <div class="btn-warning">注册</div>
             </a>
             <a href = "/login">
@@ -125,218 +126,46 @@
             <% } %>
 
         </div>
-        <div class="nav-top-middle hidden-xs hidden-sm">
+        <div class="nav-top-middle hidden-xs hidden-sm hidden-md">
             <span>WELCOME TO MYBLOG</span>
         </div>
     </nav>
     <!--内容窗口部分-->
     <div class="main">
+        <% data.forEach(function(value){%>
         <div class="media">
             <div class="media-left media-middle">
-                <a href="#">
+                <a href="/comment/<%= value.id %>">
                     <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <h4 class="media-heading"><a href = "/comment/<%= value.id %>"><%= value.title %></a></h4>
                 <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
 
+                    <%= value.content%>
                 </div>
                 <div class="media-footer">
                     <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
+                    <span><%= value.uid %></span>
+                    <br/>
+                    <span><%= value.time %></span>
                 </div>
             </div>
         </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left media-middle">
-                <a href="#">
-                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href = "#">标题</a></h4>
-                <div media-content>
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                </div>
-                <div class="media-footer">
-                    <span>作者:</span>
-                    <span>cch</span>
-                    <span>0个回复</span>
-                    <span>2018-6-23</span>
-                    <span>17:50</span>
-                </div>
-            </div>
-        </div>
+        <% }) %>
 
     </div>
 
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
-            <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
-        </ul>
-    </nav>
+    <!--<nav aria-label="...">-->
+        <!--<ul class="pager">-->
+            <!--<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>-->
+            <!--<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>-->
+        <!--</ul>-->
+    <!--</nav>-->
 </div>
 
 
 </body>
 </html>
 <script type = "text/javascript" src = "../www/js/jquery-1.9.0.min.js"></script>
-<script>
-
-</script>

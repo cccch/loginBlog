@@ -87,7 +87,12 @@
             .comment-img {
                 width: 200px;
                 height: 200px;
-
+            }
+            .comment-content ul {
+                padding-left: 200px;
+            }
+            .comment-content ul li{
+                margin: 8px;
             }
         }
         .comment-img {
@@ -95,11 +100,11 @@
             background: url(../www/images/touxiang.png) no-repeat 0 0;
             -webkit-background-size: cover;
             background-size: cover;
-            float: left;
+            /*float: left;*/
             margin: 10px;
         }
         .comment-head {
-            font: 500 30px/30px 'microsoft yahei';
+            font: 500 40px/40px 'microsoft yahei';
             text-shadow: 3px 3px 1px #ccc;
             color: #0074D9;
         }
@@ -111,6 +116,10 @@
         }
         .media-content {
             text-indent: 25px;
+        }
+        .comment-main {
+            font: 400 25px/25px 'microsoft yahei';
+
         }
         /*输入框部分*/
         .edit {
@@ -150,12 +159,36 @@
             .edit-enter div {
                 font: 600 30px/200px 'microsoft yahei';
             }
+            .comment-time span {
+                font: 300 12px/12px 'microsoft yahei';
             }
-            @media screen and (min-width: 800px) {
-                .edit-enter div {
-                    font: 600 50px/200px 'microsoft yahei';
-                }
+            .media-footer span {
+                font: 300 12px/12px 'microsoft yahei';
+
             }
+        }
+        @media screen and (min-width: 800px) {
+            .edit-enter div {
+                font: 600 50px/200px 'microsoft yahei';
+            }
+            .comment-time span {
+                font: 400 18px/18px 'microsoft yahei';
+            }
+            .media-footer span {
+                font: 400 18px/18px 'microsoft yahei';
+
+            }
+            .comment-img {
+                float: left;
+            }
+            .media-content{
+                font: 500 25px/25px 'microsoft yahei';
+            }
+        }
+
+        #comment-main {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -166,15 +199,15 @@
         <div class="nav-top-logo"></div>
         <div class="nav-top-right">
             <% if(username) { %>
-            <a href = "./out">
+            <a href = "/out">
                 <div class="btn-warning">登出</div>
             </a>
-            <a href = "./article">
+            <a href = "/article">
                 <div class="btn-success">写文</div>
             </a>
-            <p>欢迎您,  <%= username %></a>
+            <p class="hidden-xs">欢迎您,  <%= username %></a>
                 <% } else{%>
-                <a href = "./login">
+                <a href = "/login">
                     <div class="btn-warning">注册</div>
                 </a>
                 <a href = "/login">
@@ -187,34 +220,22 @@
         </div>
     </nav>
     <div class="comment">
-        <div class="comment-img"></div>
-        <h3 class="comment-head">天气</h3>
-        <div class="comment-time">
-            <span>2018-6-23</span>
-            <span>17:50</span>
-            <span>作者:</span>
-            <span>cch</span>
-        </div>
-        <div class="comment-main">
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
-            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+        <div id="comment-main">
+            <div class="comment-img"></div>
+            <h3 class="comment-head"><%= article.title%></h3>
+            <div class="comment-time">
+                <span><%= article.time%></span>
+                <br/>
+                <span>作者:</span>
+                <span><%= article.uid%></span>
+            </div>
+            <div class="comment-main">
+                <%= article.content%>
+            </div>
         </div>
     <div class="comment-content">
         <ul>
+            <% comment.forEach(function(value){ %>
             <li>
                 <div class="media">
                     <div class="media-left media-middle">
@@ -224,81 +245,67 @@
                     </div>
                     <div class="media-body">
                         <div class="media-content">
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            <%= value.content %>
                         </div>
                         <div class="media-footer">
                             <span>作者:</span>
-                            <span>cch</span>
-                            <span>2018-6-23</span>
-                            <span>17:50</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#">
-                            <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <div class="media-content">
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                        </div>
-                        <div class="media-footer">
-                            <span>作者:</span>
-                            <span>cch</span>
-                            <span>2018-6-23</span>
-                            <span>17:50</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#">
-                            <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <div class="media-content">
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
-                        </div>
-                        <div class="media-footer">
-                            <span>作者:</span>
-                            <span>cch</span>
-                            <span>2018-6-23</span>
-                            <span>17:50</span>
+                            <span><%= value.uid %></span>
+                            <span><%= value.time %></span>
                         </div>
                     </div>
                 </div>
             </li>
 
-
+            <%})  %>
         </ul>
     </div>
 
 </div>
     <div class="edit">
         <p>请输入您的评论:</p>
-        <div class="edit-enter" contenteditable="true">
+        <% if(username){ %>
+        <div class="edit-enter" id="edit-enter" contenteditable="true"></div>
+         <% }else{ %>
+        <div class="edit-enter">
             <div>
                 请您先进行登录
             </div>
         </div>
+        <% } %>
+        <% if(username){ %>
         <div class="btn-success edit-button">发表评论</div>
+        <% }else{ %>
+        <div class="btn-success edit-button" disabled>发表评论</div>
+
+        <% }%>
     </div>
 </div>
 </body>
 </html>
+<script type = "text/javascript" src = "../www/js/jquery-1.9.0.min.js"></script>
+<script>
+    $('.edit-button').on('click',function(){
+        var content = $('#edit-enter').html();
+        if(content==''||content=='<br>'){
+            alert('请输入评论内容')
+            return false;
+        }
+        //获取aid
+        var aid = location.href.split('/');
+        aid = aid[aid.length-1];
+        var data = {
+            aid:aid,
+            content:content
+        }
+        $.ajax({
+            url:'/comment',
+            type:'post',
+            data:data,
+            datatype:'json',
+            success:function(data){
+                alert(data.msg);
+                location.reload()
+            }
+        })
+    })
+</script>

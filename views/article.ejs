@@ -123,15 +123,15 @@
         <div class="nav-top-logo"></div>
         <div class="nav-top-right">
             <% if(username) { %>
-            <a href = "./out">
+            <a href = "/out">
                 <div class="btn-warning">登出</div>
             </a>
-            <a href = "./article">
+            <a href = "/article">
                 <div class="btn-success">写文</div>
             </a>
-            <p>欢迎您,  <%= username %></a>
+            <p class="hidden-xs">欢迎您,  <%= username %></a>
                 <% } else{%>
-                <a href = "./login">
+                <a href = "/login">
                     <div class="btn-warning">注册</div>
                 </a>
                 <a href = "/login">
@@ -151,7 +151,7 @@
             <label for = "article-title">标题:</label><input type = "text" id="article-title"/>
             <br/>
             <label for = "article-content">内容:</label><div id="article-content" contenteditable="true"></div>
-            <button class="btn-success">提交</button>
+            <button class="btn-success" id="article-submit">提交</button>
         </form>
     </div>
 
@@ -159,3 +159,33 @@
 
 </body>
 </html>
+<script type = "text/javascript" src = "../www/js/jquery-1.9.0.min.js"></script>
+<script>
+    //绑定提交事件
+    $('#article-submit').on('click',function(e){
+        var e = e||window.event;
+        e.preventDefault();
+        var title = $('#article-title').val();
+        var content = $('#article-content').html();
+        if(title==''||content==''){
+            alert('请输入内容和标题');
+            return false;
+        }
+        var data = {
+            title:title,
+            content:content
+        }
+        $.ajax({
+            url:'/article',
+            type:'post',
+            data:data,
+            datatype:'json',
+            success:function(data){
+                if(data.state){
+                    alert(data.msg);
+                    $(location).attr('href','/index')
+                }
+            }
+        })
+    })
+</script>

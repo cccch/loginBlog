@@ -1,3 +1,5 @@
 loginBlog
-node+express+mysql 简单实现注册登录
+bootstrap+jq前端
+node+express+mysql后端
+实现注册登录发文章评论功能
 
