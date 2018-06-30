@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title>article</title>
+    <link rel = "stylesheet" href = "../www/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        a {
+            text-decoration: none;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+
+        }
+        .content {
+            height: 100%;
+            width: 100%;
+        }
+        .nav-top {
+            background-color: #FF6B6B;
+            color: #fff;
+            height: 50px;
+            border: 1px solid #FF6B6B;
+            text-align: center;
+        }
+        .nav-top-logo{
+            width: 60px;
+            height: 40px;
+            background: url(../www/images/logo.png) no-repeat 0 0;
+            -webkit-background-size: cover;
+            background-size: cover;
+            margin: 5px 0 0 30px;
+            float: left;
+        }
+        .nav-top-middle span {
+            font: 500 30px/52px 'microsoft yahei';
+            color: #fff;
+        }
+        .nav-top-right {
+            float: right;
+        }
+        .nav-top-right a {
+            float: right;
+        }
+        .nav-top-right div {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            font: 500 17px/40px 'microsoft yahei';
+            float: right;
+            margin: 5px 30px 5px 5px;
+            cursor: pointer;
+        }
+        .nav-top-right p {
+            position: absolute;
+            right: 300px;
+            top: 0;
+            font: 500 25px/50px 'microsoft yahei';
+        }
+        @media screen and (max-width: 800px){
+            .main {
+                width: 95%;
+                margin: 30px auto;
+
+            }
+        }
+        @media screen and (min-width: 800px){
+            .main {
+                width: 60%;
+                margin: 50px auto;
+
+            }
+        }
+        .article {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .article h3{
+            text-align: center;
+            color: #000;
+            font: 600 30px/50px 'microsoft yahei';
+        }
+        .article form input{
+            width: 70%;
+            height: 40px;
+        }
+        .article form label {
+            height: 40px;
+            font: 400 30px/40px 'microsoft yahei';
+            margin: 30px;
+        }
+        .article button {
+            width: 100px;
+            height: 50px;
+            font: 400 30px/50px 'microsoft yahei';
+            outline: none;
+            margin-top: 10px;
+        }
+        #article-content {
+            height: 300px;
+            border: 1px solid #000;
+            font: 400 17px/30px 'microsoft yahei';
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <nav class="nav-top">
+        <div class="nav-top-logo"></div>
+        <div class="nav-top-right">
+            <% if(username) { %>
+            <a href = "./out">
+                <div class="btn-warning">登出</div>
+            </a>
+            <a href = "./article">
+                <div class="btn-success">写文</div>
+            </a>
+            <p>欢迎您,  <%= username %></a>
+                <% } else{%>
+                <a href = "./login">
+                    <div class="btn-warning">注册</div>
+                </a>
+                <a href = "/login">
+                    <div class="btn-success">登录</div>
+                </a>
+                <% } %>
+
+        </div>
+        <div class="nav-top-middle hidden-xs hidden-sm">
+            <span>WELCOME TO MYBLOG</span>
+        </div>
+    </nav>
+    <div class="article">
+        <h3>发表文章</h3>
+
+        <form action = "">
+            <label for = "article-title">标题:</label><input type = "text" id="article-title"/>
+            <br/>
+            <label for = "article-content">内容:</label><div id="article-content" contenteditable="true"></div>
+            <button class="btn-success">提交</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

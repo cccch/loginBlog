@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>博客登录和注册</title>
     <meta charset="utf-8">
-    <link href = "/www/css/main.css" rel = "stylesheet" type = "text/css"/>
+    <link href = "../www/css/main.css" rel = "stylesheet" type = "text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 <h1>博客登录和注册</h1>
@@ -116,7 +117,7 @@
                             <input type = "button" id = "reg" style = "margin-top:10px;margin-left:85px;"
                                    class = "button_blue" value = "同意协议并注册"/>
                             <a href = "javascript:;" class = "zcxy"
-                                                                                target = "_blank">注册协议</a>
+                               target = "_blank">注册协议</a>
                         </div>
                     
                     </li>
@@ -134,26 +135,26 @@
 <div class = "jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>
 </body>
 </html>
-<script type = "text/javascript" src = "/www/js/jquery-1.9.0.min.js"></script>
+<script type = "text/javascript" src = "../www/js/jquery-1.9.0.min.js"></script>
 <!--<script src = "js/login.js"></script>-->
 <script>
-$(function(){
-    //注册点击事件
-    $('#switch_login').on('click',function(){
-        $('#web_qr_login').css('display','none');
-        $('#qlogin').css('display','block');
-        $('#switch_bottom').css('left','155px');
+    $(function(){
+        //注册点击事件
+        $('#switch_login').on('click',function(){
+            $('#web_qr_login').css('display','none');
+            $('#qlogin').css('display','block');
+            $('#switch_bottom').css('left','155px');
 
-    })
-    $('#switch_qlogin').on('click',function(){
-        $('#qlogin').css('display','none');
-        $('#web_qr_login').css('display','block');
-        $('#switch_bottom').css('left','0px');
+        })
+        $('#switch_qlogin').on('click',function(){
+            $('#qlogin').css('display','none');
+            $('#web_qr_login').css('display','block');
+            $('#switch_bottom').css('left','0px');
 
+        })
     })
-})
-//注册业务处理
-//注册表单前台校验
+    //注册业务处理
+    //注册表单前台校验
     $(function(){
         $('#reg').on('click',function(){
             if(!/^[a-zA-Z]+[a-zA-Z0-9]+$/.test($('#user').val())){
@@ -203,37 +204,53 @@ $(function(){
             }
         })
     })
-//登录业务处理
-$(function(){
-    $('#login_btn').on('click',function(event){
-        var event = event||window.event;
-        var login = {
-            username:$('#u').val(),
-            password:$('#p').val()
-        }
-
-    event.preventDefault();
-        $.ajax({
-            url:'/login',
-            type:'post',
-            data:login,
-            datatype:'string',
-            success:function(data) {
-                if(data.state){
-                    $('.lerr span').html(data.msg);
-                    $('.lerr').removeClass('no');
-                    $('.lerr').addClass('yes');
-                    return false;
-                }
-                else {
-                    $('.lerr span').html(data.msg);
-                    $('.lerr').removeClass('yes');
-                    $('.lerr').addClass('no');
-                    return false;
-
-                }
+    //登录业务处理
+    $(function(){
+        $('#login_btn').on('click',function(event){
+            var event = event||window.event;
+            var login = {
+                username:$('#u').val(),
+                password:$('#p').val()
             }
+
+            event.preventDefault();
+            $.ajax({
+                url:'/login',
+                type:'post',
+                data:login,
+                datatype:'string',
+                success:function(data) {
+                    if(data.state){
+                        $('.lerr span').html(data.msg);
+                        $('.lerr').removeClass('no');
+                        $('.lerr').addClass('yes');
+                        //延迟500ms跳转
+                        //确定登录成功后发送ajax到后台
+                        $.ajax({
+                            url:'/index',
+                            type:'post',
+                            data:{username:data.username},
+                            datatype:'string',
+                            success:function(data){
+//                                $(document.documentElement).replaceWith(data)
+                                setTimeout(function(){
+                            $(location).attr('href','/index');
+
+                             },500)
+                            }
+                        })
+//
+                        return false;
+                    }
+                    else {
+                        $('.lerr span').html(data.msg);
+                        $('.lerr').removeClass('yes');
+                        $('.lerr').addClass('no');
+                        return false;
+
+                    }
+                }
             })
-    })
+        })
     })
 </script>

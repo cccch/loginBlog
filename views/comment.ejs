@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title>comment</title>
+    <link rel = "stylesheet" href = "../www/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        ul,ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            height: 100%;
+            width: 100%;
+            background-color: #eee;
+        }
+        .nav-top {
+            background-color: #FF6B6B;
+            color: #fff;
+            height: 50px;
+            border: 1px solid #FF6B6B;
+            text-align: center;
+        }
+        .nav-top-logo{
+            width: 60px;
+            height: 40px;
+            background: url(../www/images/logo.png) no-repeat 0 0;
+            -webkit-background-size: cover;
+            background-size: cover;
+            margin: 5px 0 0 30px;
+            float: left;
+        }
+        .nav-top-middle span {
+            font: 500 30px/52px 'microsoft yahei';
+            color: #fff;
+        }
+        .nav-top-right {
+            float: right;
+        }
+        .nav-top-right a {
+            float: right;
+        }
+        .nav-top-right div {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            font: 500 17px/40px 'microsoft yahei';
+            float: right;
+            margin: 5px 30px 5px 5px;
+            cursor: pointer;
+        }
+        .nav-top-right p {
+            position: absolute;
+            right: 300px;
+            top: 0;
+            font: 500 25px/50px 'microsoft yahei';
+        }
+        /*评论部分*/
+        .comment{
+            padding: 50px;
+        }
+        @media screen and (max-width: 800px){
+            .comment-img {
+                width: 100px;
+                height: 100px;
+
+            }
+        }
+        @media screen and (min-width: 800px){
+            .comment-img {
+                width: 200px;
+                height: 200px;
+
+            }
+        }
+        .comment-img {
+
+            background: url(../www/images/touxiang.png) no-repeat 0 0;
+            -webkit-background-size: cover;
+            background-size: cover;
+            float: left;
+            margin: 10px;
+        }
+        .comment-head {
+            font: 500 30px/30px 'microsoft yahei';
+            text-shadow: 3px 3px 1px #ccc;
+            color: #0074D9;
+        }
+        .comment-content {
+            padding-top: 20px;
+        }
+        .comment-content ul {
+            overflow: hidden;
+        }
+        .media-content {
+            text-indent: 25px;
+        }
+        /*输入框部分*/
+        .edit {
+            padding: 50px;
+            width: 100%;
+
+        }
+        .edit p {
+            font: 500 20px/50px 'microsoft yahei';
+        }
+        .edit-enter{
+            height: 200px;
+            width: 90%;
+            border: 1px solid #000;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .edit-enter div {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .edit-button {
+            width: 130px;
+            height: 60px;
+            font: 500 25px/60px 'microsoft yahei';
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: bottom;
+            margin: 10px auto;
+        }
+        @media screen and (max-width: 800px){
+            .edit-enter div {
+                font: 600 30px/200px 'microsoft yahei';
+            }
+            }
+            @media screen and (min-width: 800px) {
+                .edit-enter div {
+                    font: 600 50px/200px 'microsoft yahei';
+                }
+            }
+    </style>
+</head>
+<body>
+<div class="content">
+    <!--导航部分-->
+
+    <nav class="nav-top">
+        <div class="nav-top-logo"></div>
+        <div class="nav-top-right">
+            <% if(username) { %>
+            <a href = "./out">
+                <div class="btn-warning">登出</div>
+            </a>
+            <a href = "./article">
+                <div class="btn-success">写文</div>
+            </a>
+            <p>欢迎您,  <%= username %></a>
+                <% } else{%>
+                <a href = "./login">
+                    <div class="btn-warning">注册</div>
+                </a>
+                <a href = "/login">
+                    <div class="btn-success">登录</div>
+                </a>
+                <% } %>
+        </div>
+        <div class="nav-top-middle hidden-xs hidden-sm">
+            <span>WELCOME TO MYBLOG</span>
+        </div>
+    </nav>
+    <div class="comment">
+        <div class="comment-img"></div>
+        <h3 class="comment-head">天气</h3>
+        <div class="comment-time">
+            <span>2018-6-23</span>
+            <span>17:50</span>
+            <span>作者:</span>
+            <span>cch</span>
+        </div>
+        <div class="comment-main">
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+            阿斯蒂芬多多多多多多多多多多多多多多多多多多多多多
+        </div>
+    <div class="comment-content">
+        <ul>
+            <li>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="media-content">
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                        </div>
+                        <div class="media-footer">
+                            <span>作者:</span>
+                            <span>cch</span>
+                            <span>2018-6-23</span>
+                            <span>17:50</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="media-content">
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                        </div>
+                        <div class="media-footer">
+                            <span>作者:</span>
+                            <span>cch</span>
+                            <span>2018-6-23</span>
+                            <span>17:50</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="media-content">
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                            粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                        </div>
+                        <div class="media-footer">
+                            <span>作者:</span>
+                            <span>cch</span>
+                            <span>2018-6-23</span>
+                            <span>17:50</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+
+</div>
+    <div class="edit">
+        <p>请输入您的评论:</p>
+        <div class="edit-enter" contenteditable="true">
+            <div>
+                请您先进行登录
+            </div>
+        </div>
+        <div class="btn-success edit-button">发表评论</div>
+    </div>
+</div>
+</body>
+</html>

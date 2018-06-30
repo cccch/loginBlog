@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title></title>
+    <link rel = "stylesheet" href = "../www/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<style>
+    a {
+        text-decoration: none;
+    }
+    .clearfix::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    .content {
+        height: 100%;
+        width: 100%;
+        background-color: #eee;
+    }
+    .nav-top {
+        background-color: #FF6B6B;
+        color: #fff;
+        height: 50px;
+        border: 1px solid #FF6B6B;
+        text-align: center;
+    }
+    .nav-top-logo{
+        width: 60px;
+        height: 40px;
+        background: url(../www/images/logo.png) no-repeat 0 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+        margin: 5px 0 0 30px;
+        float: left;
+    }
+    .nav-top-middle span {
+        font: 500 30px/52px 'microsoft yahei';
+        color: #fff;
+    }
+    .nav-top-right {
+        float: right;
+    }
+    .nav-top-right a {
+        float: right;
+    }
+    .nav-top-right div {
+        width: 80px;
+        height: 40px;
+        text-align: center;
+        font: 500 17px/40px 'microsoft yahei';
+        float: right;
+        margin: 5px 30px 5px 5px;
+        cursor: pointer;
+    }
+    .nav-top-right p {
+        position: absolute;
+        right: 300px;
+        top: 0;
+        font: 500 25px/50px 'microsoft yahei';
+    }
+    @media screen and (max-width: 800px){
+        .main {
+            width: 95%;
+            margin: 30px auto;
+
+        }
+    }
+    @media screen and (min-width: 800px){
+        .main {
+            width: 60%;
+            margin: 50px auto;
+
+        }
+    }
+
+    .main {
+        padding: 5px;
+        background-color: #fff;
+    }
+    .main>div {
+        padding: 5px;
+        border-bottom:1px solid #ccc;
+    }
+    .media-footer{
+        float: right;
+        margin-top: 10px;
+    }
+    .media-footer span {
+        margin: 3px;
+    }
+
+</style>
+<body>
+<div class="content">
+    <!--导航部分-->
+    <nav class="nav-top">
+        <div class="nav-top-logo"></div>
+        <div class="nav-top-right">
+            <% if(username) { %>
+            <a href = "./out">
+                <div class="btn-warning">登出</div>
+            </a>
+            <a href = "./article">
+                <div class="btn-success">写文</div>
+            </a>
+            <p>欢迎您,  <%= username %></a>
+                <% } else{%>
+            <a href = "./login">
+                <div class="btn-warning">注册</div>
+            </a>
+            <a href = "/login">
+                <div class="btn-success">登录</div>
+            </a>
+            <% } %>
+
+        </div>
+        <div class="nav-top-middle hidden-xs hidden-sm">
+            <span>WELCOME TO MYBLOG</span>
+        </div>
+    </nav>
+    <!--内容窗口部分-->
+    <div class="main">
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="../www/images/touxiang.png" alt="..." width="60" height="60">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href = "#">标题</a></h4>
+                <div media-content>
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                    粉红色大空间划分达康书记发挥大康师傅开始加大回复看电视剧安徽科技的萨达萨达撒
+                </div>
+                <div class="media-footer">
+                    <span>作者:</span>
+                    <span>cch</span>
+                    <span>0个回复</span>
+                    <span>2018-6-23</span>
+                    <span>17:50</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
+</div>
+
+
+</body>
+</html>
+<script type = "text/javascript" src = "../www/js/jquery-1.9.0.min.js"></script>
+<script>
+
+</script>
